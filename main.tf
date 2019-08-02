@@ -1,5 +1,14 @@
-data "extip" "external_ip" {}
 
-output "external_ip" {
-  value = "${data.extip.external_ip.ipaddress}"
+provider "shell" {}
+
+data "shell_script" "test" {
+  lifecycle_commands {
+    read = <<EOF
+		echo '{"commit_id": "'$(echo $(cat /etc/issue | awk '{print $1}'))'"}' >&3
+		EOF
+  }
+}
+
+output "commit_id" {
+  value = data.shell_script.test.output["commit_id"]
 }
