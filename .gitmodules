@@ -1,0 +1,3 @@
+[submodule "terraform.d/plugins"]
+	path = terraform.d/plugins
+	url = https://github.com/yaroslav-007/17447-module.git
