@@ -1,4 +1,5 @@
 
+
 # Terraform code with git  submodule code for community provider
 
 This is simple TF code that consume git submodule for community provider plugin. The main goal is in one git repository's folders to link another git repository. In our case we link a community plug in shell (https://github.com/scottwinkler/terraform-provider-shell) so we can reuse it in multiple repositories but upload it one and thus save space.
@@ -58,3 +59,10 @@ We can check if the shell plugin is loaded:
 └── provider.shell
 
 ```
+### How the code was created
+- Two repos were created: 17447 and 17447-module. The firsts one contains the tf code and the second community provider shell.
+- To add the git submodule 17447-module in the main repo 17447, you perform the following command in your local cloned 17447: `git submodule add <url to the submodule repo> <the path in your main repo where the submodule will be 'mounted">`
+```
+git submodule add https://github.com/yaroslav-007/17447-module.git terraform.d/plugins
+```
+- A new directory (in our case terraform.d ) will be created accordingly and new file named .gitmodules containing information regarding git submodule info. Commit those two files to the main repo.
