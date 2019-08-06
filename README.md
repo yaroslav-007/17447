@@ -36,7 +36,7 @@ To test if the code and clone of the github repo successful, we should run **ter
 
 ### Performing the test
 
-Run **terraform init*
+Run **terraform init**
 
 ```
 terraform init
